@@ -1,0 +1,27 @@
+﻿@{
+  ViewData["Title"] = "Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table border="1" cellpadding="10">
+  @{var cartInstance = @CartModelSingleton.Instance; 
+    cartInstance.UpdateCount(); }
+  @{var catalogInstance = @ProductCatalogModelSingleton.Instance; }
+  @foreach (var item in cartInstance.ItemCountPairs)
+  {
+    <tr>
+      <td>@item.Value</td>
+      <td>@item.Key</td>
+      <td>@catalogInstance.GetProductByName(item.Key).ProductPrice</td>
+      <td>
+        <a asp-action="RemoveFromCart"
+           asp-controller="Home"
+           asp-route-name="@item.Key">
+          Remove From cart
+        </a>
+      </td>
+    </tr>
+  }
+
+</table>
