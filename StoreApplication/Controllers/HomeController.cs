@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication1.Models;
+using StoreApplication.Models;
 
-namespace WebApplication1.Controllers
+namespace StoreApplication.Controllers
 {
   public class HomeController : Controller
   {
@@ -45,16 +45,21 @@ namespace WebApplication1.Controllers
       return View();
     }
 
-    public IActionResult AddToCart(string name)
+    protected void Button1_Click(object sender, System.EventArgs e)
+    {
+      //Label1.Text = "You clicked the first button.";
+    }
+
+    public void AddToCart(object sender, EventArgs e)
     {
       try
       {
-        cartModelInstance.CartItems.Add(catalogModelInstance.GetProductByName(name));
-        return RedirectToAction(nameof(Products));
+        //cartModelInstance.CartItems.Add(catalogModelInstance.GetProductByName(name));
+        //return RedirectToAction(nameof(Products));
       }
       catch
       {
-        return View();
+        //return View();
       }
     }
 

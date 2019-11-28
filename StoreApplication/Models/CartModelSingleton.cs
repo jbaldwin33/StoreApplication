@@ -4,18 +4,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace StoreApplication.Models
 {
   public sealed class CartModelSingleton
   {
     private static CartModelSingleton instance = null;
     private static readonly object cartLock = new object();
 
+    private Guid id;
     private List<ItemModel> cartItems = new List<ItemModel>();
     private Dictionary<string, int> itemCountPairs = new Dictionary<string, int>();
 
     CartModelSingleton()
     {
+      ID = Guid.NewGuid();
     }
 
     public static CartModelSingleton Instance
@@ -29,6 +31,12 @@ namespace WebApplication1.Models
           return instance;
         }
       }
+    }
+
+    public Guid ID
+    {
+      get => id;
+      set => id = value;
     }
 
     public List<ItemModel> CartItems
@@ -45,6 +53,9 @@ namespace WebApplication1.Models
 
     public void UpdateCount()
     {
+      if (CartItems.Count < 1)
+        ItemCountPairs.Clear();
+
       foreach (var item in CartItems)
       {
         var count = CartItems.Select(x => x).Where(x => x.ProductName == item.ProductName).Count();

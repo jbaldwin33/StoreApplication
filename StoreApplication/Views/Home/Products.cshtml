@@ -1,14 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Products";
+  ViewData["Title"] = "Products";
 }
 
 <h1>Products</h1>
+@{    
+  void Button1_Click(object sender, System.EventArgs e)
+  {
+    //Label1.Text = "You clicked the first button.";
+  }
 
-
+  void Button2_Click(object sender, System.EventArgs e)
+  {
+    //Label1.Text = "You clicked the second button.";
+  }
+}
 <div class="row">
   <h4>Elderberry syrup</h4>
   <p>Price: $15.00</p>
-  <a class="nav-link" asp-controller="Home" asp-action="AddToCart" asp-route-name="Elderberry syrup">Add To Cart</a>
+  <button onclick="Button1_Click()" value="Add To Cart"/>
 </div>
 <div class="row">
   <h4>Item 2</h4>

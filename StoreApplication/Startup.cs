@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace WebApplication1
+namespace StoreApplication
 {
   public class Startup
   {
@@ -48,6 +48,9 @@ namespace WebApplication1
 
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapControllerRoute(
+          name: "Products",
+          pattern: "{controller=Products}/{action=Index}/{id?}");
         endpoints.MapControllerRoute(
                   name: "default",
                   pattern: "{controller=Home}/{action=Index}/{id?}");

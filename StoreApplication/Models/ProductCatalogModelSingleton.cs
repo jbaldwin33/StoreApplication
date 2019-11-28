@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace StoreApplication.Models
 {
   public sealed class ProductCatalogModelSingleton
   {
